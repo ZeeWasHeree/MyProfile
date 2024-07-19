@@ -1,12 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <style>
+    }
+footer ul li {
+  float: left;
+  margin-left: 10px;
+}
+footer ul li a,
+footer ul li a:visited  {
+  color: #b2b2b2;
+  font-size: 14px;
+  font-weight: 700;
+}
+footer ul li a:hover,
+footer ul li a:focus,
+footer ul li a:active{
+  color: #fff;
+}
+  </style>
 <title>Page Title</title>
 </head>
 <body>
+  <script>
+    $(document).ready(function () {  
+  $('nav a').on('click', navScroll);
+  $(document).on('scroll', onScroll);
+});
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+function navScroll() {
+  var $this = $(this);
+  var href = $this.attr('href');
+  
+  var scrollTo =  $(href).offset().top - 100;
+  
+  $('html, body').animate({scrollTop: scrollTo}, 300);
+  return false;
+}
 
+function onScroll() {
+  var offset = 200;
+  var scrolled = $(document).scrollTop() + offset;
+  
+  if (scrolled > 200 + offset) {
+    if (!$('nav').hasClass('small'))
+      $('nav').addClass('small')
+  } else {    
+    if ($('nav').hasClass('small'))
+      $('nav').removeClass('small')
+  }
+  
+  $('nav menu li a').each(function () {   
+    var href = $(this).attr('href');
+    var sectTop = $(href).offset().top;
+    var sectBottom = sectTop + $(href).height();
+    
+    if (scrolled >= sectTop && scrolled < sectBottom) {
+      if (!$(this).hasClass('active'))
+        $(this).addClass('active');
+    } else {
+      if ($(this).hasClass('active'))
+        $(this).removeClass('active');
+    }
+  });
+}
+  </script>
+  <nav>
+  <a class="pull-left" href="#home">
+    Mikhail<span>Panichev</span>
+  </a>
+  <menu class="pull-right">
+    <li>
+      <a href="#about">About</a>
+    </li>
+    <li>
+      <a href="#works">Works</a>
+    </li>
+    <li>
+      <a href="#contacts">Contacts</a>
+    </li>
+  </menu> 
+  <div class="clearfix"></div>
+</nav>
+
+<header id="home">
+  <div class="content">
+    <div class="col-md-12 text-center">
+      <h1>
+        Hello, I am a
+        <i>web developer</i>
+      </h1>
+      <p>
+        And I will do the best site for you.
+      </p>
+      <a class="btn btn-default btn-lg" href="#works">Look at works</a>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</header>
+
+<main class="content" >
+  <section id="about">
+    <div class="col-md-12 text-center">
+      <h2>About</h2>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-4 service-item">
+        <div class="img-container">
+          <img src="https://pp.vk.me/c637424/v637424231/b377/n4iKqCROgSg.jpg" alt="responsive design icon"/>
+        </div>
+        <h4>Responsive design</h4>
+        <p>
+          Your site or app will look great on desktop, tablet and
+          mobile devices. Moreover, it will be as easy as possible
+          for users
+        </p>
+      </div>
+      <div class="col-md-4 service-item">
+        <div class="img-container">
+          <img src="https://pp.vk.me/c637424/v637424231/b37e/JF5JeynSDDc.jpg" alt="good brain icon"/>
+        </div>
+        <h4>Great code</h4>
+        <p>
+          Your site or app will be great inside too, because I write
+          very clean, very optimized and readable code on php, nodejs,
+          javascript, css and html (of course if you need it)
+        </p>
+      </div>
+      <div class="col-md-4 service-item">
+        <div class="img-container">
+          <img src="https://pp.vk.me/c637424/v637424231/b370/ChEAqBDTbP0.jpg" alt="seo icon"/>
+        </div>        
+        <h4>Search Engine Optimization</h4>
+        <p>
+          If you need, I optimize your site for search systems like
+          Google or Yandex. Your site will be not only beautiful but
+          also will have users
+        </p>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </section>
+  
+  <section id="works">
+    <div class="col-md-12 text-center">
 </body>
 </html>
